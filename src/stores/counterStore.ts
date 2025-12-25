@@ -1,45 +1,19 @@
-import { create } from "zustand";
-import type { CounterStore } from "~/types";
+// stores/counterStore.ts
+import { create } from 'zustand'
 
-export const useCounterStore = create<CounterStore>((set, get) => ({
+// 1. 定义 Store 的类型
+interface CounterState {
+  count: number          // 状态数据
+  increment: () => void  // 修改状态的方法
+  decrement: () => void
+}
+
+// 2. 创建 Store
+export const useCounterStore = create<CounterState>((set) => ({
+  // 初始状态
   count: 0,
-  isLoading: false,
-  lastUpdated: undefined,
-
-  increment: () =>
-    set((state) => ({
-      count: state.count + 1,
-      lastUpdated: new Date().toISOString(),
-    })),
-
-  decrement: () =>
-    set((state) => ({
-      count: state.count - 1,
-      lastUpdated: new Date().toISOString(),
-    })),
-
-  reset: () =>
-    set({
-      count: 0,
-      lastUpdated: new Date().toISOString(),
-    }),
-
-  incrementAsync: async (amount = 1) => {
-    set({ isLoading: true });
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      set((state) => ({
-        count: state.count + amount,
-        lastUpdated: new Date().toISOString(),
-      }));
-    } finally {
-      set({ isLoading: false });
-    }
-  },
-
-  getCurrentCount: () => {
-    const current = get().count;
-    console.log("当前 count:", current);
-    return current;
-  },
-}));
+  
+  // 修改状态的方法
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+}))

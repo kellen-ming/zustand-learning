@@ -11,4 +11,10 @@ export default defineConfig({
       "~": path.resolve(__dirname, "./src"),
     },
   },
+  css: {
+    devSourcemap: true,
+  },
+  build: {
+    sourcemap: true,
+  },
 });

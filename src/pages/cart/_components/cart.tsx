@@ -1,3 +1,5 @@
+// pages/cart/_components/cart.tsx
+
 import { useShallow } from "zustand/react/shallow";
 import { useCartStore } from "~/stores/cartStore";
 // --- 2. 模拟商品数据 ---
@@ -8,7 +10,7 @@ const PRODUCTS = [
 ];
 
 // --- 3. UI 组件 ---
-export default function Cart() {
+export function Cart() {
   // ✅ 最佳实践：订阅 items 数据
   // 这里 items 是数组，数组引用是不稳定的，所以如果你只订阅 items，
   // 实际上每次 items 变化组件都会渲染，这里用不用 useShallow 区别不大（除非你还订阅了其他基本类型）

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<style>
+  /* 容器：定义渐变背景和动画 */
+  .input-wrapper {
+    position: relative;
+    width: 300px;
+    height: 50px;
+    padding: 2px; /* 边框的厚度 */
+    border-radius: 8px;
+    overflow: hidden;
+    background: #1a1a1a;
+  }
+
+  /* 流光背景层 */
+  .input-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* 设置流光颜色 */
+    background: conic-gradient(
+      transparent, 
+      #00fffc, 
+      #00fffc, 
+      transparent 50%
+    );
+    /* 旋转动画 */
+    animation: rotate 3s linear infinite;
+  }
+
+  /* 输入框主体：覆盖在背景上 */
+  .input-wrapper input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #111; /* 输入框背景色，需与外层背景呼应 */
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    color: white;
+    padding: 0 15px;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  /* 旋转动画定义 */
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* 聚焦时增强流光感 (可选) */
+  .input-wrapper:focus-within::before {
+    animation-duration: 4s; /* 聚焦时转得更快 */
+    background: conic-gradient(
+      transparent, 
+      #ff00ea, 
+      #00fffc, 
+      transparent 50%
+    );
+  }
+</style>
+</head>
+<body>
+
+  <div class="input-wrapper">
+    <input type="text" placeholder="输入内容...">
+  </div>
+
+</body>
+</html>

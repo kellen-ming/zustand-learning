@@ -1,4 +1,4 @@
-// components/CounterDisplay.tsx
+// pages/counter-demo/_components/counter-display.tsx
 import { useAppStore } from "~/stores/appStore";
 
 export function CounterDisplay() {

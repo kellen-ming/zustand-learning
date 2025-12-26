@@ -1,4 +1,5 @@
-// components/Counter.tsx
+// pages/counter
+import { DemoWrapper } from "~/components/demo-wrapper";
 import { useCounterStore } from "~/stores/counterStore";
 
 export function Counter() {
@@ -11,7 +12,7 @@ export function Counter() {
   const decrement = useCounterStore((state) => state.decrement);
 
   return (
-    <div>
+    <DemoWrapper title='Demo 1: 最简单的计数器'>
       <h2 className='text-2xl font-bold'>Count: {count}</h2>
       <button onClick={increment} className='bg-blue-500 text-white px-4 py-2 rounded mr-2'>
         +1
@@ -19,6 +20,6 @@ export function Counter() {
       <button onClick={decrement} className='bg-red-500 text-white px-4 py-2 rounded'>
         -1
       </button>
-    </div>
+    </DemoWrapper>
   );
 }

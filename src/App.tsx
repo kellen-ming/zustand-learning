@@ -1,9 +1,20 @@
+import { Cart } from "./pages/cart";
+import { Counter } from "./pages/counter";
+import { TodoList } from "./pages/todo-list/_components/todo-list";
 import { CounterDemo } from "./pages/counter-demo";
 
 function App() {
   return (
     <main className='app-shell'>
-      <CounterDemo />
+      <div className='flex flex-col gap-10'>
+        <Counter />
+        <hr />
+        <CounterDemo />
+        <hr />
+        <Cart />
+        <hr />
+        <TodoList />
+      </div>
     </main>
   );
 }

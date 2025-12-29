@@ -2,6 +2,7 @@ import { Cart } from "./pages/cart";
 import { Counter } from "./pages/counter";
 import { TodoList } from "./pages/todo-list/_components/todo-list";
 import { CounterDemo } from "./pages/counter-demo";
+import { AsyncCartList } from "./pages/async-cart-list";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <CounterDemo />
         <hr />
         <Cart />
+        <hr />
+        <AsyncCartList />
         <hr />
         <TodoList />
       </div>

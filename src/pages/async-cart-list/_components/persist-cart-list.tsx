@@ -1,7 +1,7 @@
 import { useShallow } from "zustand/shallow";
 import { useCartPersistStore } from "~/stores/cartPersistStore";
 
-export function PresetCartList() {
+export function PersistCartList() {
   const items = useCartPersistStore((state) => state.items);
   const isLoading = useCartPersistStore((state) => state.isLoading);
 

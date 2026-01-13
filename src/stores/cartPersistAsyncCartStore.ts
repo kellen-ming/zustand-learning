@@ -21,9 +21,9 @@ const api = {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({
-          name: "kellen",
+          name: "Coco",
           email: "kellen@example.com",
-          avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
+          avatar: "https://api.dicebear.com/8.x/avataaars/svg?seed=Felix",
         });
       }, 1500);
     });

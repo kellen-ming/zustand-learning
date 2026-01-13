@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useUserStore } from "~/stores/cartPersistAsyncCartStore";
 
 export function UserProfileView() {
@@ -14,30 +14,30 @@ export function UserProfileView() {
   // if (!isReady) return <div className='p-10 text-center'>系统准备中...</div>;
 
   return (
-    <div style={containerStyle}>
-      <header style={headerStyle}>
+    <div className="p-4 max-w-2xl mx-auto font-sans">
+      <header className="flex justify-between items-center mb-4">
         <h2>用户信息 (持久化 + 缓存示例)</h2>
-        <button onClick={() => fetchProfile()} disabled={isLoading} style={btnStyle}>
+        <button onClick={() => fetchProfile(true)} disabled={isLoading} className="px-4 py-2 rounded-md border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
           {isLoading ? "加载中..." : "手动刷新数据"}
         </button>
       </header>
 
-      <section style={cardStyle}>
+      <section className="border border-gray-200 rounded-lg p-4 shadow-sm">
         {profile ? (
-          <div style={contentStyle}>
-            <img src={profile.avatar} alt='avatar' style={avatarStyle} />
+          <div className="flex items-center gap-4">
+            <img src={profile.avatar} alt='avatar' className="w-10 h-10 rounded-full bg-gray-200" />
             <div>
-              <h3>{profile.name}</h3>
-              <p>{profile.email}</p>
-              <small style={{ color: "#999" }}>上次同步时间: {new Date(lastUpdated).toLocaleTimeString()}</small>
+              <h3 className="text-lg font-bold">{profile.name}</h3>
+              <p className="text-sm text-gray-500">{profile.email}</p>
+              <small className="text-sm text-gray-500">上次同步时间: {new Date(lastUpdated).toLocaleTimeString()}</small>
             </div>
           </div>
         ) : (
-          <p style={{ color: "#999" }}>暂无缓存数据，正在尝试请求...</p>
+          <p className="text-sm text-gray-500">暂无缓存数据，正在尝试请求...</p>
         )}
       </section>
 
-      <div style={footerStyle}>
+      <div className="mt-6 text-sm text-gray-500 space-y-2">
         <p>
           💡 <b>测试说明：</b>
         </p>
@@ -50,36 +50,10 @@ export function UserProfileView() {
             <b>清空测试</b>：点击下方按钮清空后刷新，会重新触发 Loading。
           </li>
         </ol>
-        <button onClick={clearStorage} style={dangerBtnStyle}>
+        <button onClick={clearStorage} className="px-4 py-2 rounded-md border border-red-500 text-sm font-medium text-red-500 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed">
           清空持久化数据
         </button>
       </div>
     </div>
   );
 }
-
-// --- 极简 CSS-in-JS 样式 ---
-const containerStyle: React.CSSProperties = {
-  padding: "20px",
-  maxWidth: "500px",
-  margin: "auto",
-  fontFamily: "sans-serif",
-};
-const headerStyle: React.CSSProperties = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: "20px",
-};
-const cardStyle: React.CSSProperties = {
-  border: "1px solid #eee",
-  padding: "20px",
-  borderRadius: "12px",
-  background: "#fff",
-  boxShadow: "0 4px 6px rgba(0,0,0,0.05)",
-};
-const contentStyle: React.CSSProperties = { display: "flex", gap: "20px", alignItems: "center" };
-const avatarStyle: React.CSSProperties = { width: "60px", height: "60px", borderRadius: "50%", background: "#f0f0f0" };
-const btnStyle = { padding: "8px 16px", borderRadius: "6px", cursor: "pointer", border: "1px solid #ddd" };
-const dangerBtnStyle = { ...btnStyle, color: "#ff4d4f", borderColor: "#ff4d4f", marginTop: "10px" };
-const footerStyle: React.CSSProperties = { marginTop: "30px", fontSize: "13px", color: "#666", lineHeight: "1.6" };

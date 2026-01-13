@@ -8,10 +8,10 @@ export function AsyncCartList() {
     <DemoWrapper title={`Demo4: 购物车（Async Actions和persist）`} className='space-y-4'>
       <AsyncCartListComponent />
 
-      <h2 className='text-2xl font-bold'>PersistCartList</h2>
+      <h2 className='text-2xl font-bold'>PersistCartList:</h2>
       <PersistCartListComponent />
 
-      <h2 className='text-2xl font-bold'>Persist + Async Action</h2>
+      <h2 className='text-2xl font-bold'>Persist + Async Action:</h2>
       <UserProfileViewComponent />
     </DemoWrapper>
   );
